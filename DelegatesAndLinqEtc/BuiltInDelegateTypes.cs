@@ -11,8 +11,7 @@ namespace DelegatesAndLinqEtc
         public void UsingActions()
         {
             // actions - methods that return void, takes 0-16 args
-            Action action;
-            action = () => Console.Write("ahh");
+            Action action = () => Console.Write("ahh");
             action();
 
             Action<string, int> action2 = (message, times) =>
@@ -29,9 +28,7 @@ namespace DelegatesAndLinqEtc
         public void Funcs()
         {
             // funcs - return something, takes 0-16 args
-            Func<int, int, int> mathOp;
-
-            mathOp = (a, b) => a + b;
+            Func<int, int, int> mathOp = (a, b) => a + b;
             Assert.Equal(4, mathOp(2, 2));
 
             mathOp = (a, b) => a * b;

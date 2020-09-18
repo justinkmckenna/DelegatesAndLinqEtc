@@ -26,6 +26,24 @@ namespace DelegatesAndLinqEtc
             var twoLetteredNames = friends.Where(x => x.Length == 2);
             friends.Add("eh");
             Assert.Equal(3, twoLetteredNames.Count()); // this is really cool
+                                                       // waits until this line to actually look at twoLetteredNames data
+
+            var david = friends.SingleOrDefault(x => x == "david");
+            Assert.Null(david);
+        }
+
+        [Fact]
+        public void test()
+        {
+            var numbers = new List<int> { 1, 2, 3, 4, 5 };
+            var evens = numbers.Where(Utils.isEven); // evens doesn't contain data yet
+            var evensList = numbers.Where(Utils.isEven).ToList(); // data in this because its a list
+
+            // Assert.Equal(2, evens[1]); // can't do this because its an ienumerable, doesn't have data yets, not indexable
+            Assert.Equal(2, evensList[0]);
+
+            var five = numbers.SingleOrDefault(n => n == 15);
+            Assert.Equal(0, five);
         }
     }
 }
